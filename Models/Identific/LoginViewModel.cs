@@ -9,8 +9,8 @@ namespace Portal.Models.Identific
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Tab")]
+        public string Tab { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
