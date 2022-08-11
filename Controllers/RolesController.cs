@@ -66,7 +66,7 @@ namespace Portal.Controllers
                 ChangeRoleViewModel model = new ChangeRoleViewModel
                 {
                     UserId = user.Id,
-                    UserEmail = user.Email,
+                    UserTab = user.Email,
                     UserRoles = userRoles,
                     AllRoles = allRoles
                 };

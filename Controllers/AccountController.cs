@@ -29,7 +29,7 @@ namespace Portal.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year };
+                    User user = new User {  UserName = model.Tab ,Tab=model.Tab};
                     // добавляем пользователя
                     var result = await _userManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
@@ -61,7 +61,7 @@ namespace Portal.Controllers
             if (ModelState.IsValid)
             {
                 var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    await _signInManager.PasswordSignInAsync(model.Tab, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
                     // проверяем, принадлежит ли URL приложению

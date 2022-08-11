@@ -13,7 +13,10 @@ namespace Portal.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+           
+
+        Database.EnsureCreated();
+            
         }
     }
 }
