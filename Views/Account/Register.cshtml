@@ -1,24 +1,40 @@
 ﻿@model Portal.Models.Identific.RegisterViewModel
 <h2>Регистрация нового пользователя</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
-    <div asp-validation-summary="ModelOnly"></div>
-    <div>
-        <label asp-for="Tab"></label><br />
-        <input asp-for="Tab" />
-        <span asp-validation-for="Tab"></span>
+<div class="container p-0">
+    <div class="row">
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <p>
+
+                </p>
+            </div>
+            <div class="p-3 border bg-light">
+                <div>
+                    <label asp-for="Tab"></label><br />
+                    <input asp-for="Tab" />
+                    <span asp-validation-for="Tab"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Password"></label><br />
+                    <input asp-for="Password" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div>
+                    <label asp-for="PasswordConfirm"></label><br />
+                    <input asp-for="PasswordConfirm" />
+                    <span asp-validation-for="PasswordConfirm"></span>
+                </div>
+                <div>
+                    <p>
+
+                    </p>
+                </div>
+                <div>
+                    <input class="btn btn-outline-secondary btn-lg" type="submit" value="Регистрация" />
+                </div>
+            </div>
+        </form>
     </div>
-    
-    <div>
-        <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="PasswordConfirm"></label><br />
-        <input asp-for="PasswordConfirm" />
-        <span asp-validation-for="PasswordConfirm"></span>
-    </div>
-    <div>
-        <input type="submit" value="Регистрация" />
-    </div>
-</form>
+</div>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Portal.Models.Identific;
 using System;
@@ -88,6 +90,8 @@ namespace Portal.Controllers
         {
             // удаляем аутентификационные куки
             await _signInManager.SignOutAsync();
+          // await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+          //  HttpContext.Response.Cookies.Delete(".AspNetCore.Cookies");
             return RedirectToAction("Index", "Home");
         }
     }

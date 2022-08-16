@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-expand-lg fixed-top ">
+﻿
+<nav class="navbar navbar-expand-lg fixed-top ">
     <a class="navbar-brand" href="#">Администрирование</a>
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -8,12 +9,11 @@
                         Справочники
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Телефоны</a></li>
+                        <li><a class="dropdown-item" href="#">Дни рождения</a></li>
                     </ul>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle disabled" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         ОМиОТО
                     </a>
                     <ul class="dropdown-menu">
@@ -23,17 +23,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ОМиОТО
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle disabled" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         Администрирование
                     </a>
                     <ul class="dropdown-menu">
@@ -44,21 +34,78 @@
                 </li>
             </ul>
         </div>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-4">
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-4">
 
-               
+                @if (User.Identity.IsAuthenticated)        
+            {
                 <li class="nav-item">
-                    <a class="nav-link " data-value="blog" href="#">Вход</a>
+                    <a class="nav-link text-dark" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                 </li>
-               
                 <li class="nav-item">
-                    <a class="nav-link " data-value="contact" href="#">Регистрация</a>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
                 </li>
-            </ul>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Account/Login">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Account/Register">Регистрация</a>
+                </li>
 
-        </div>
+            }
+
+        </ul>
+    </div>
+
 
 
 </nav>
+
+<!-- ModalVhod -->
+<!--
+<div class="modal fade" id="ModalVhod" tabindex="-1" aria-labelledby="ModalVhodLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalVhodLabel">Форма входа</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+
+                <button type="button" class="btn btn-outline-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--ModalVhod-->
+<!-- ModalReg -->
+<!--
+<div class="modal fade" id="ModalReg" tabindex="-1" aria-labelledby="ModalRegLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalRegLabel">Форма регистрации</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                .....
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-outline-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!--ModalReg-->

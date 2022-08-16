@@ -9,7 +9,7 @@ namespace Portal.Models.Identific
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Tab")]
+        [Display(Name = "Табельный")]
         public string Tab { get; set; }     
 
         [Required]

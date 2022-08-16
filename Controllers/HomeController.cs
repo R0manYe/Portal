@@ -22,10 +22,7 @@ namespace Portal.Controllers
         {
             return View();
         }
-        public IActionResult Index1()
-        {
-            return View();
-        }
+       
 
         public IActionResult Privacy()
         {

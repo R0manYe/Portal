@@ -28,9 +28,8 @@ namespace Portal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options =>
-     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-          //  services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
-              services.AddIdentity<User, Microsoft.AspNetCore.Identity.IdentityRole>(opts => {
+     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));        
+              services.AddIdentity<User,IdentityRole>(opts => {
                   opts.Password.RequiredLength = 5;   // минимальная длина
                   opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
                   opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
@@ -41,10 +40,11 @@ namespace Portal
             services.AddControllersWithViews();
 
            
+
         }
 
-            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -68,7 +68,7 @@ namespace Portal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index1}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
