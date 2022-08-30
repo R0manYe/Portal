@@ -2,26 +2,44 @@
     @{
         ViewBag.Title = "Список пользователей";
     }
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <p>
 
-    <a asp-action="Create">Добавить пользователя</a>
+        </p>
+        <h2>Администрирование пользователей</h2>
+        <p>
 
-    <table class="table">
-        <tr><th>Id</th><th>Табельный</th><th></th></tr>
-        @foreach (var user in Model)
-        {
-    <tr>
-        <td>@user.Id</td>
-        <td>@user.Tab</td>
-     
-        <td>
-            <form asp-action="Delete" asp-route-id="@user.Id" method="post">
-                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>
-                <a class="btn btn-sm btn-primary" asp-action="ChangePassword" asp-route-id="@user.Id">Сменить пароль</a>
-                <button type="submit" class="btn btn-sm btn-danger">
-                    Удалить
-                </button>
-            </form>
-        </td>
-    </tr>
-        }
-    </table>
+        </p>
+
+        <table class="border border-dark table-sm" border="1">
+            <tr class="tabl_th">
+                <th>Id</th>
+                <th>Табельный</th>
+                <th><a class="nav-link" asp-action="Create">Добавить пользователя</a></th>
+            </tr>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Tab</td>
+                    <td>
+                        <ul class="navbar-nav mr-4">
+                            <li class="nav-item">
+                                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+
+                                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>
+                                    <a class="btn btn-outline-secondary btn-sm" asp-action="ChangePassword" asp-route-id="@user.Id">Сменить пароль</a>
+
+                                    <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+        

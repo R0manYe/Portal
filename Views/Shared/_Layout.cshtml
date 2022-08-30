@@ -1,13 +1,16 @@
-﻿<!DOCTYPE HTML>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
-    @await Html.PartialAsync("CssPartial")   
+    @await Html.PartialAsync("CssPartial")
+
 </head>
 <body>
-    @await Html.PartialAsync("NavbarPartial")
-    
-    <div id="page-wrapper">
-        @await Html.PartialAsync("CssPartial")
+    <header>
+        @await Html.PartialAsync("NavbarPartial")
+
+    </header>
+    <div class="header" id="page-wrapper">
+
         <div id="main">
             @RenderBody()
         </div>

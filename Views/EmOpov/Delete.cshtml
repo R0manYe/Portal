@@ -1,0 +1,30 @@
+﻿@model Portal.Models.EmOpov.EmOpov
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2>Удалить</h2>
+        <p>
+
+        </p>
+
+        <h2>@ViewBag.Title</h2>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>Станция</dt>
+                <dd>
+                    @Model.ID_SP
+                </dd>
+
+                <dt>Email</dt>
+                <dd>
+                    @Model.NAIM
+                </dd>
+            </dl>
+
+            <div>
+                <form asp-controller="EmOpov" asp-action="Delete" method="post">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" value="Удалить" />
+                    </div>
+                </form>
+            </div>
+        </div>

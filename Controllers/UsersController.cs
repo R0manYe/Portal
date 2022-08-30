@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Portal.Models.Identific;
 using System;
@@ -16,7 +17,7 @@ namespace Portal.Controllers
         {
             _userManager = userManager;
         }
-
+        [Authorize(Roles = "admin")]
         public IActionResult Index() => View(_userManager.Users.ToList());
 
         public IActionResult Create() => View();

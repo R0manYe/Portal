@@ -1,0 +1,30 @@
+﻿@model Portal.Models.EmOpov.EmOpov
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2>Добавить</h2>
+        <p>
+
+        </p>
+        <form asp-action="Create" asp-controller="EmOpov">
+            <div>
+                <div class="form-group">
+                    <label asp-for="ID_SP">Ид станции</label>
+                    <input type="text" asp-for="ID_SP" class="form-control form-control-sm" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="NAIM">Email</label>
+                    <input asp-for="NAIM" class="form-control  form-control-sm" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
+                </div>
+            </div>
+        </form>
+
+        <div>
+            <a asp-controller="EmOpov" asp-action="EmOpov">Вернуться к списку</a>
+        </div>
+     </div>
+</div>
+

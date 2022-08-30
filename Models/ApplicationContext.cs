@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using Portal.Models.GU;
 
 namespace Portal.Models
 {
@@ -12,11 +14,11 @@ namespace Portal.Models
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
-        {
-           
+        {           
 
         Database.EnsureCreated();
             
         }
+       
     }
 }

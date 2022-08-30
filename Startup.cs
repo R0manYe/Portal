@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Portal.Models;
+using Portal.Models.EmOpov;
+using Portal.Models.GU;
 using Portal.Models.Identific;
 using System;
 using System.Collections.Generic;
@@ -27,20 +30,19 @@ namespace Portal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options =>
-     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));        
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));        
               services.AddIdentity<User,IdentityRole>(opts => {
                   opts.Password.RequiredLength = 5;   // минимальная длина
                   opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
                   opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
                   opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
-                  opts.Password.RequireDigit = false; // требуются ли цифры
-                  
+                  opts.Password.RequireDigit = false; // требуются ли цифры                  
               }).AddEntityFrameworkStores<ApplicationContext>();
             services.AddControllersWithViews();
-
-           
-
+            string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=dbase.vspt.org)(Port=1521)))(CONNECT_DATA=(SERVICE_NAME=FLAGMAN)));User Id=VSPTSVOD;Password=sibpromtrans;";
+            services.AddTransient<IGU2VRepository, GU2VRepository>(provider => new GU2VRepository(connectionString));
+            services.AddTransient<IEmOpovRepository, EmOpovRepository>(provider => new EmOpovRepository(connectionString));
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,17 +54,15 @@ namespace Portal
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                /*  app.UseExceptionHandler("/Home/Error");               
+                  app.UseHsts();*/
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseAuthorization();          
 
             app.UseEndpoints(endpoints =>
             {

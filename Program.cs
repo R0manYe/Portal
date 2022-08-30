@@ -22,5 +22,6 @@ namespace Portal
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

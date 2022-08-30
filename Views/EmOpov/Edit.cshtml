@@ -1,0 +1,31 @@
+﻿@model Portal.Models.EmOpov.EmOpov
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2>Изменить</h2>
+        <p>
+
+        </p>
+
+        <form asp-action="Edit" asp-controller="EmOpov">
+            <div>
+                <input type="hidden" asp-for="ID" />
+                <div class="form-group">
+                    <label asp-for="ID_SP"></label>
+                    <input type="text" asp-for="ID_SP" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="NAIM"></label>
+                    <input asp-for="NAIM" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
+                </div>
+            </div>
+        </form>
+
+        <div>
+            <a asp-controller="EmOpov" asp-action="EmOpov">Вернуться к списку</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Portal.Models.EmOpov.EmOpov>
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2>Список ГУ2В</h2>
+        <p>
+
+        </p>
+
+        <table id="table" data-toggle="table"
+               data-pagination="true"
+               data-search="true"
+               class="border border-dark table-sm table-light" border="1">
+            <thead>
+                <tr class="tabl_th">
+
+                    <th data-field="Id_sp" data-filter-control="select">Станция</th>
+                    <th data-field="Naim" data-filter-control="select">E-mail</th>
+                    <th><a class="nav-link" asp-action="Create">Добавить оповещение.</a></th>
+                </tr>
+            </thead>
+            @foreach (var mod in Model)
+            {
+                <tr>                                     
+                    <td>@mod.NAIM_FULL</td>
+                    <td>@mod.NAIM</td>  
+                    <td>
+                        <a asp-controller="EmOpov" asp-action="Edit" asp-route-id="@mod.ID">Изменить</a> |
+                        <a asp-controller="EmOpov" asp-action="Delete" asp-route-id="@mod.ID">Удалить</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <script>
+            $(function () {
+                $('#table').bootstrapTable()
+            })
+        </script>
+
+
+    </div>
+</div>
+

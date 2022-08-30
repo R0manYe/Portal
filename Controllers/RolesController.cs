@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Portal.Models.Identific;
 using System;
@@ -8,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace Portal.Controllers
 {
+
+
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -17,7 +21,9 @@ namespace Portal.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-        public IActionResult Index() => View(_roleManager.Roles.ToList());
+        [Authorize(Roles = "admin")]
+        public IActionResult Index() => View(_roleManager.Roles.ToList());        
+        
 
         public IActionResult Create() => View();
         [HttpPost]
@@ -100,5 +106,6 @@ namespace Portal.Controllers
 
             return NotFound();
         }
+       
     }
 }
