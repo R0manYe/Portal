@@ -10,20 +10,26 @@ namespace Portal.Controllers
 {
     public class GU2VController : Controller
     {
-       
-            IGU2VRepository repo;
-            public GU2VController(IGU2VRepository r)
-            {
-                repo = r;
-            }
+
+        IGU2VRepository repo;
+        public GU2VController(IGU2VRepository r)
+        {
+            repo = r;
+        }
         [Authorize(Roles = "GU2V")]
         public ActionResult GU2V()
-            {
-                return View(repo.GetGU2V());
-            }
-            
-
-
-
+        {
+            return View(repo.GetGU2V());
         }
+
+        public ActionResult LOGI()
+        {
+            return View(repo.GetLOGI());
+        }
+
+
+
+
     }
+}
+    

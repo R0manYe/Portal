@@ -32,13 +32,13 @@ namespace Portal
         {
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));        
               services.AddIdentity<User,IdentityRole>(opts => {
-                  opts.Password.RequiredLength = 5;   // минимальная длина
-                  opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
-                  opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
-                  opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
-                  opts.Password.RequireDigit = false; // требуются ли цифры                  
+                  opts.Password.RequiredLength = 5;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                  opts.Password.RequireNonAlphanumeric = false;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                  opts.Password.RequireLowercase = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                  opts.Password.RequireUppercase = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                  opts.Password.RequireDigit = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ                  
               }).AddEntityFrameworkStores<ApplicationContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=dbase.vspt.org)(Port=1521)))(CONNECT_DATA=(SERVICE_NAME=FLAGMAN)));User Id=VSPTSVOD;Password=sibpromtrans;";
             services.AddTransient<IGU2VRepository, GU2VRepository>(provider => new GU2VRepository(connectionString));
             services.AddTransient<IEmOpovRepository, EmOpovRepository>(provider => new EmOpovRepository(connectionString));

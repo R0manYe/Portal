@@ -99,6 +99,14 @@ html, h1, h2, h3, h4, h5, h6, a {
 .tabl_th {
     background-color: #F97300;
     color: #f5f6f7;
+    border-color: black;
+    font-size: 80%;
+}
+.tabl_th1 {
+    border: solid;
+    border-width:inherit; 
+        border-color:black;
+    font-size: 80%;
 }
 
     

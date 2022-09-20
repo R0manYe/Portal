@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Portal.Models.GU.Dislokacia>
+
+
+<div class="row">
+    <div class="col-md-12 mx-auto">
+        <h2>Подходы вагонов</h2>
+        <p>
+
+        </p>
+
+      
+
+        @(Html.DevExtreme().DataGrid<Portal.Models.GU.Dislokacia>()
+        .ID("gridContainer")
+        .ShowBorders(true)
+        .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+        .Paging(paging => paging.PageSize(20))
+        .DataSource(ds => ds.Mvc()
+            .Controller("Market")
+            .LoadAction("GetCompanies")
+            .Key("ID")
+        )
+        .RemoteOperations(true)
+        .Columns(columns => {
+           
+
+            columns.AddFor(m => m.NOM_VAG);
+
+            columns.AddFor(m => m.NAIM_ROD_VAG);
+
+            columns.AddFor(m => m.NAIM_STAN_NAZN);
+
+            columns.AddFor(m => m.GRUZPOL_OKPO);
+
+            columns.AddFor(m => m.NAIM_GRUZPOL_OKPO);
+
+            columns.AddFor(m => m.NAIM_GRUZOTPR_OKPO);
+
+            columns.AddFor(m => m.NAIM_KOD_GRZ);
+
+            columns.AddFor(m => m.VES_GRZ);
+
+            columns.AddFor(m => m.DATE_OP);
+
+            columns.AddFor(m => m.NAIM_STAN_OP);
+
+            columns.AddFor(m => m.NAIM_KOP_VMD);
+
+            columns.AddFor(m => m.INDEX_POEZD);
+
+            columns.AddFor(m => m.NOM_POEZD);
+
+            columns.AddFor(m => m.NPP_VAG);
+
+            columns.AddFor(m => m.DATE_DOSTAV);
+
+            columns.AddFor(m => m.RASST_STAN_NAZN);
+
+            columns.AddFor(m => m.DOR);
+        })
+        )
+        @*<table id="table" data-toggle="table"
+               data-pagination="true"
+               data-search="true"
+               data-filter-control="true"
+               class="border border-dark table-sm table-light">
+            <thead>
+                <tr class="tabl_th">
+                    <th data-field="NOM_VAG" data-filter-control="input">Вагон</th>
+                    <th data-field="NAIM_ROD_VAG">Род вагона</th>
+                    <th data-field="NAIM_STAN_NAZN" data-filter-control="select">Ст. назначения</th>
+                    <th data-field="GRUZPOL_OKPO">ОКПО Груз-ля</th>
+                    <th data-field="NAIM_GRUZPOL_OKPO" data-filter-control="select">Грузополучатель</th>
+                    <th data-field="NAIM_GRUZOTPR_OKPO" data-filter-control="select">Грузоотправитель</th>
+                    <th data-field="NAIM_KOD_GRZ" data-filter-control="select">Груз</th>
+                    <th data-field="VES_GRZ"data-filter-control="input">Вес</th>
+                    <th data-field="DATE_OP">Дата операции</th>
+                    <th data-field="NAIM_STAN_OP" data-filter-control="select">Ст. операции</th>
+                    <th data-field="NAIM_KOP_VMD">Время подачи</th>
+                    <th data-field="INDEX_POEZD">Кол-во ваг. док ЭТРАН</th>
+                    <th data-field="NOM_POEZD" data-filter-control="select">№ поезда</th>
+                    <th data-field="NPP_VAG">№ в составе</th>
+                    <th data-field="DATE_DOSTAV">Дата доставки</th>
+                    <th data-field="RASST_STAN_NAZN">Расстояние</th>
+                    <th data-field="DOR">Дорога</th>
+                </tr>
+            </thead>
+            @foreach (var mod in Model)
+            {
+        <tr class="tabl_th1">
+            <td>@mod.NOM_VAG</td>
+            <td>@mod.NAIM_ROD_VAG</td>
+            <td>@mod.NAIM_STAN_NAZN</td>
+            <td>@mod.GRUZPOL_OKPO</td>
+            <td>@mod.NAIM_GRUZPOL_OKPO</td>
+            <td>@mod.NAIM_GRUZOTPR_OKPO</td>
+            <td>@mod.NAIM_KOD_GRZ</td>
+            <td>@mod.VES_GRZ</td>
+            <td>@mod.DATE_OP</td>
+            <td>@mod.NAIM_STAN_OP</td>
+            <td>@mod.NAIM_KOP_VMD</td>
+            <td>@mod.INDEX_POEZD</td>
+            <td>@mod.NOM_POEZD</td>
+            <td>@mod.NPP_VAG</td>
+            <td>@mod.DATE_DOSTAV</td>
+            <td>@mod.RASST_STAN_NAZN</td>
+            <td>@mod.DOR</td>
+        </tr>
+            }
+
+        </table>
+
+        <script>
+            $(function () {
+                $('#table').bootstrapTable()
+            })
+        </script>*@
+
+
+    </div>
+   
+</div>

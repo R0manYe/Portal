@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Portal.Models.GU.GU2V>
 
 <div class="row">
-    <div class="col-md-6 mx-auto">
-        <h2>Список ГУ2В</h2>
+    <div class="col-md-8 mx-auto">
+        <h2>Реестр загрузки ГУ2В.</h2>
         <p>
 
         </p>
@@ -10,24 +10,25 @@
         <table id="table" data-toggle="table"
                data-pagination="true"
                data-search="true"
+               data-filter-control="true"
                class="border border-dark table-sm table-light" border="1">
             <thead>
                 <tr class="tabl_th">
-                    <th data-field="ST_NAIM">Станция</th>
-                    <th data-field="NUM" data-filter-control="input">№ документа</th>
-                    <th data-field="N_DAT" data-filter-control="select">дата док.</th>
-                    <th data-field="PL_DAT" data-filter-control="select">Дата подачи</th>
-                    <th data-field="PL_TIME" data-filter-control="select">Время подачи</th>
-                    <th data-field="COL_W" data-filter-control="select">Кол-во ваг. док</th>
-                    <th data-field="COL_W_f" data-filter-control="select">Кол-во ваг. загр.</th>
+                    <th data-field="ST_NAIM" data-filter-control="select">Станция</th>
+                    <th data-field="ID">ID документа</th>
+                    <th data-field="NUM">№ документа</th>
+                    <th data-field="PL_DAT">Дата подачи</th>
+                    <th data-field="PL_TIME">Время подачи</th>
+                    <th data-field="COL_W">Кол-во ваг. док ЭТРАН</th>
+                    <th data-field="COL_W_f">Кол-во ваг. загр. в Комплекс</th>
                 </tr>
             </thead>
             @foreach (var mod in Model)
             {
         <tr>
             <td>@mod.ST_NAIM</td>
+            <td>@mod.ID</td>
             <td>@mod.NUM</td>
-            <td>@mod.N_DAT</td>
             <td>@mod.PL_DAT</td>
             <td>@mod.PL_TIME</td>
             <td>@mod.COL_W</td>

@@ -14,13 +14,12 @@
                             <li><a class="dropdown-item" href="#">Дни рождения</a></li>
                         </ul>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle disabled" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ОМиОТО
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="/Market/Dislokacia">Дислокация</a></li>
+                           
                         </ul>
                     </li>
                     @if (User.Identity.IsAuthenticated)
@@ -31,6 +30,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/GU2V/GU2V">ГУ2В</a></li>
+                                <li><a class="dropdown-item" href="/GU2V/logi">Логирование</a></li>
                                 <li><a class="dropdown-item" href="/EmOpov/EmOpov">Оповещение</a></li>
                             </ul>
                         </li>

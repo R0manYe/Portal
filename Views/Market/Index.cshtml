@@ -1,0 +1,63 @@
+﻿@*@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "gridView";
+    settings.CallbackRouteValues = new { Controller = "DataBinding", Action = "AdvancedCustomBindingPartial" };
+    settings.CustomBindingRouteValuesCollection.Add(
+        GridViewOperationType.Paging,
+        new { Controller = "DataBinding", Action = "AdvancedCustomBindingPagingAction" }
+    );
+    settings.CustomBindingRouteValuesCollection.Add(
+        GridViewOperationType.Filtering,
+        new { Controller = "DataBinding", Action = "AdvancedCustomBindingFilteringAction" }
+    );
+    settings.CustomBindingRouteValuesCollection.Add(
+        GridViewOperationType.Sorting,
+        new { Controller = "DataBinding", Action = "AdvancedCustomBindingSortingAction" }
+    );
+    settings.CustomBindingRouteValuesCollection.Add(
+        GridViewOperationType.Grouping,
+        new { Controller = "DataBinding", Action = "AdvancedCustomBindingGroupingAction" }
+    );
+
+    settings.KeyFieldName = "ID";
+    settings.Settings.ShowFilterRow = true;
+    settings.Settings.ShowHeaderFilterButton = true;
+    settings.Settings.ShowGroupPanel = true;
+    settings.Settings.ShowFilterBar = GridViewStatusBarMode.Visible;
+    settings.Settings.ShowFooter = true;
+    settings.SettingsSearchPanel.Visible = true;
+
+    settings.Width = Unit.Percentage(100);
+    settings.Columns.Add("From").Width = Unit.Pixel(200);
+    settings.Columns.Add("Subject");
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "Sent";
+        column.ColumnType = MVCxGridViewColumnType.DateEdit;
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+        column.Width = Unit.Pixel(100);
+    });
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "Size";
+        column.ColumnType = MVCxGridViewColumnType.SpinEdit;
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+    });
+    settings.Columns.Add("HasAttachment", "Attachment?", MVCxGridViewColumnType.CheckBox).Width = Unit.Pixel(100);
+
+    settings.FilterControlOperationVisibility = (s, e) =>
+    {
+        if (e.Operation == DevExpress.Data.Filtering.Helpers.ClauseType.Like || e.Operation == DevExpress.Data.Filtering.Helpers.ClauseType.NotLike)
+            e.Visible = false;
+    };
+
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Size");
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "Subject");
+    settings.GroupSummary.Add(DevExpress.Data.SummaryItemType.Count, string.Empty);
+
+    settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
+    settings.ClientSideEvents.BeginCallback = "function(s, e) { OnStartCallback(s, e); }";
+    settings.ClientSideEvents.EndCallback = "function(s, e) { OnEndCallback(s, e); }";
+
+    DevExpress.Web.Demos.GridViewFeaturesHelper.SetupGlobalGridViewBehavior(settings);
+}).BindToCustomData(Model).GetHtml()*@

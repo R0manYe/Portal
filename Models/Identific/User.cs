@@ -10,7 +10,7 @@ namespace Portal.Models.Identific
 {
     public class User : IdentityUser
     {
-     
+        public static object Identity { get; internal set; }
         public string Tab { get; set; }
     }
 

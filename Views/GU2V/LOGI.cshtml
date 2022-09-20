@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Portal.Models.GU.LOGI>
+
+<div class="row">
+    <div class="col-md-9 mx-auto">
+        <p>
+        </p>
+        <h2>Логирование</h2>
+        <p>
+        </p>
+
+        <table id="table" data-toggle="table"
+               data-pagination="true"
+               data-search="true"
+               data-filter-control="true"
+               class="border border-dark table-sm table-light" border="1">
+            <thead>
+                <tr class="tabl_th">
+                    <th data-field="DATA">Дата</th>
+                    <th data-field="SPR" data-filter-control="select">Справочник</th>
+                    <th data-field="ID_ST" data-filter-control="select">Код станции</th>
+                    <th data-field="DOC">№ документа</th>
+                    <th data-field="ID_USER">Таб пользователя</th>
+                    <th data-field="ID_DOC_COMPLEX" data-filter-control="input">ID Комплекс</th>
+                    <th data-field="ID_DOC_ETRAN" data-filter-control="input">ID Этран</th>
+                    <th data-field="DATA_ETRAN_INS">Дата ЭТРАН</th>
+                    <th data-field="EMAIL" data-filter-control="input">Email</th>
+                </tr>
+            </thead>
+            @foreach (var mod in Model)
+            {
+                <tr>
+                    <td>@mod.DATA</td>
+                    <td>@mod.SPR</td>
+                    <td>@mod.ID_ST</td>
+                    <td>@mod.DOC</td>
+                    <td>@mod.ID_USER</td>
+                    <td>@mod.ID_DOC_COMPLEX</td>
+                    <td>@mod.ID_DOC_ETRAN</td>
+                    <td>@mod.DATA_ETRAN_INS</td>
+                    <td>@mod.EMAIL</td>
+                </tr>
+            }
+
+        </table>
+       
+        <script>
+            $(function () {
+                $('#table').bootstrapTable()
+            })
+        </script>
+
+
+    </div>
+</div>
